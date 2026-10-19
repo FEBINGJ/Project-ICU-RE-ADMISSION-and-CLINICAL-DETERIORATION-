@@ -17,6 +17,12 @@ app.add_middleware(
 )
 
 
+@app.get("/")
+def root() -> dict:
+    """Landing route so the bare address doesn't return 404."""
+    return {"message": "Clinical Risk Prediction API is running", "docs": "/docs"}
+
+
 @app.get("/health")
 def health() -> dict:
     """Simple check that the API is running."""
