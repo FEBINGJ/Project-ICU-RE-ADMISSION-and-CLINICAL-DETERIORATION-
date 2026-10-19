@@ -1,0 +1,43 @@
+# --- Patient data: NEVER commit (dataset licences usually forbid redistribution) ---
+data/raw/*
+data/interim/*
+data/processed/*
+!data/raw/.gitkeep
+!data/interim/.gitkeep
+!data/processed/.gitkeep
+*.csv
+*.parquet
+*.feather
+*.db
+*.sqlite
+
+# --- Trained models and reports ---
+models/*
+!models/.gitkeep
+reports/figures/*
+!reports/figures/.gitkeep
+
+# --- Python ---
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+.pytest_cache/
+.ipynb_checkpoints/
+*.egg-info/
+
+# --- Secrets / environment ---
+.env
+.env.*
+!.env.example
+
+# --- Frontend ---
+node_modules/
+dist/
+build/
+
+# --- OS / editor ---
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
