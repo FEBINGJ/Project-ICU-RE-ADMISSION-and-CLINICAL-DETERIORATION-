@@ -10,14 +10,14 @@ EHR data → Preprocessing → Health trends → Two prediction models → Risk 
 
 ## Tech stack
 
-| Layer | Tools |
-|---|---|
-| Data | Python, Pandas, NumPy |
-| ML / DL | scikit-learn, XGBoost, PyTorch (LSTM) |
-| Explainability | SHAP |
-| Backend | FastAPI, PostgreSQL, SQLAlchemy |
-| Frontend | React + TypeScript |
-| Visualization | Matplotlib, Seaborn |
+| Layer          | Tools                                 |
+| -------------- | ------------------------------------- |
+| Data           | Python, Pandas, NumPy                 |
+| ML / DL        | scikit-learn, XGBoost, PyTorch (LSTM) |
+| Explainability | SHAP                                  |
+| Backend        | FastAPI, PostgreSQL, SQLAlchemy       |
+| Frontend       | React + TypeScript                    |
+| Visualization  | Matplotlib, Seaborn                   |
 
 ## Project structure
 
@@ -69,7 +69,7 @@ Patient data stays in `data/` and is **never pushed to GitHub**. Many clinical d
 ## Roadmap
 
 - [x] Phase 0: Setup
-- [ ] Phase 1: Literature review and research gap
+- [x] Phase 1: Literature review and research gap
 - [ ] Phase 2: Data understanding (EDA)
 - [ ] Phase 3: Cohort and label definition
 - [ ] Phase 4: Preprocessing and trend features
