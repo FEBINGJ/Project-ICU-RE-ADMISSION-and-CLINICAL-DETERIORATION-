@@ -60,6 +60,23 @@ Computed in `notebooks/01_eda_mimic_demo.ipynb`; label logic in `ml/data/mimic_d
 - NEWS2/MEWS inputs are present for 86% of time points (94% if GCS is ignored), so both scores can be computed as baselines.
 - Consequences: split by patient, use repeated stratified patient-level cross-validation, report wide uncertainty, and expect the LSTM may not beat the tree models.
 
+## Feature decisions for Phase 4 (locked 2026-10-24)
+
+| Decision | Choice |
+|---|---|
+| Lookback windows, deterioration | 6, 12 and 24 hours before each 6-hourly prediction time point |
+| Lookback windows, readmission | The same 6, 12 and 24 hours counted back from ICU discharge, plus whole-stay summaries. Stays without enough history keep their rows, with missing trend values marked |
+| Snapshot features | Last value, time since last measurement, and a "was measured" flag for each vital and lab |
+| Trend features | Slope, mean, minimum, maximum, variability and change (last minus first) per lookback |
+| Context features | Age, sex, care unit, hours since ICU admission, on-ventilator flag |
+| Clinical baselines | NEWS2 and MEWS computed at the same time points |
+| Primary lab set (12) | Sodium, potassium, urea nitrogen, creatinine, bicarbonate, hematocrit, glucose, white blood cells, platelets, hemoglobin, phosphate, calcium (all at least 92% complete) |
+| Lab add-on (ablation only) | Lactate (48% complete) and INR (79%): compare "core 12" against "core 12 + lactate + INR" |
+| Labs dropped | Albumin, troponin, bilirubin (too sparse); stated as a limitation |
+| Feature-set ablation | "Snapshot only" versus "snapshot + trend" (the research question), plus "vitals only" versus "vitals + labs" |
+| LSTM input | 24 hourly steps with the values plus a "measured" mask |
+| Leakage test | A test that changes data after the prediction time and checks that the features do not change |
+
 ## Known limitations of this project
 - Small cohort (100 patients); results are a proof of concept, not clinically validated
 - Few readmission events, so estimates will have wide uncertainty
