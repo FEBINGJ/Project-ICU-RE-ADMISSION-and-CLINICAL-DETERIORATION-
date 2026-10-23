@@ -35,7 +35,7 @@ How each part is tested:
 | Candidate models | Decided | XGBoost, Random Forest, LSTM |
 | Research gap | Decided | Trend features vs snapshot features vs NEWS2/MEWS, with alert burden (see research question) |
 | Readmission definition | Decided | ICU readmission within 30 days of ICU discharge, predicted at ICU discharge. Window to confirm against demo event counts. |
-| Deterioration definition | Adapted in Phase 2, awaiting confirmation | Within the ICU: start of invasive mechanical ventilation or death within 24 hours of a 6-hourly prediction time point. "ICU transfer" is dropped because the dataset has no ward vital signs (see Phase 2 findings). |
+| Deterioration definition | Decided (adapted in Phase 2, confirmed 2026-10-24) | Within the ICU: start of invasive mechanical ventilation or death within 24 hours of a 6-hourly prediction time point. "ICU transfer" is dropped because the dataset has no ward vital signs (see Phase 2 findings). |
 | Cohort | Proposed | Adults only; exclude patients who died in the ICU (as in the iREAD study) |
 | Prediction time point | Proposed | Readmission: at ICU discharge. Deterioration: every 6 hours (sliding windows). |
 | Validation | Proposed | Stratified cross-validation split by patient, never by row |
