@@ -1,7 +1,7 @@
 # Features (Phase 4)
 
 Code: `ml/features/` (`clean.py`, `windows.py`, `scores.py`, `build_features.py`). Tests: `tests/test_features.py`.
-Build the deterioration table with `python -m ml.features.build_features` (run `python -m ml.data.build_labels` first).
+Build everything with `python -m ml.features.build_features` (run `python -m ml.data.build_labels` first).
 
 ## Part A: deterioration features (done)
 Output: `data/processed/deterioration_features.parquet`, 1,986 time points x 244 columns.
@@ -41,5 +41,31 @@ Simplifications: NEWS2 uses SpO2 scale 1 only; consciousness comes from GCS (bel
 - Many trend columns are empty when fewer than two measurements fall in a window (for example GCS over 6 hours, which is charted about every 4 hours). Tree models handle missing values directly; the LSTM will use value plus a "measured" mask. Imputation and scaling happen inside the cross-validation folds (Phase 5), never on the whole table.
 - NEWS2 and MEWS are higher on average before deterioration (NEWS2 7.8 vs 6.3, MEWS 4.1 vs 3.3), a plausible sign that the baselines work as intended.
 
-## Part B (next): readmission features and LSTM arrays
-Same lookbacks counted back from ICU discharge plus whole-stay summaries, and 24 hourly steps with a "measured" mask for the LSTM.
+## Part B: readmission features and LSTM arrays (done)
+`python -m ml.features.build_features` now builds all four outputs: `deterioration_features`, `readmission_features`, `deterioration_sequences` and `readmission_sequences`.
+
+### Readmission features (`readmission.py`)
+Output: `data/processed/readmission_features.parquet`, 128 ICU stays x 281 columns (21 positive stays from 15 patients). The prediction time is ICU discharge.
+- Same snapshot and trend features as above, with the 6, 12 and 24-hour lookbacks counted back from ICU discharge.
+- `vitals_stay` group (28 columns): mean, min, max and std of each vital over the whole ICU stay.
+- Stay context (12 columns): age, sex, first and last care unit, ICU length of stay, hours from hospital admission to ICU discharge, number of earlier ICU stays, hours since the previous ICU discharge, ever ventilated, ventilation hours, on a ventilator at discharge, hours since extubation.
+- NEWS2 and MEWS at discharge (96% and 95% available).
+- **Never used as features** (only known later): hospital discharge location, death on the ward after the ICU, the gap to the next ICU stay.
+
+### LSTM arrays (`sequences.py`)
+Files: `deterioration_sequences.npz` (1,986 x 24 x 19) and `readmission_sequences.npz` (128 x 24 x 19).
+- 24 hourly steps ending at the prediction time; 19 channels: 7 vitals and the 12 core labs.
+- `X` = last known value (carried forward, including from before the window), `M` = a new measurement arrived in that hour, `D` = hours since the last measurement (capped at 48).
+- Remaining gaps in `X` (never measured) are filled later inside each cross-validation fold with training-fold medians, never on the whole table.
+- Static features (age, sex, care unit, ...) are not in the arrays; the LSTM will receive them separately.
+
+### Leakage checks for Part B
+- Unit tests (`tests/test_readmission_sequences.py`): data after discharge, or stored after discharge, changes nothing; leaky columns are absent.
+- Real data: all information after the prediction time was deleted and the features rebuilt, with 0 changes for 128 readmission stays, 100 deterioration windows and 128 readmission sequences.
+- NEWS2 at ICU discharge averages 5.6 for patients who were readmitted within 30 days and 4.1 for those who were not.
+
+### Planned ablations for readmission
+snapshot at discharge, plus the 6/12/24-hour trends, plus whole-stay summaries; vitals only versus vitals + labs versus + lactate and INR.
+
+### Phase 5 warning
+Readmission has 281 columns for 21 positive stays from 15 patients. Use compact feature sets, regularisation or feature selection inside the cross-validation folds, and report wide uncertainty.

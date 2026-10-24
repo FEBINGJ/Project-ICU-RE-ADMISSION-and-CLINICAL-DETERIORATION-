@@ -104,11 +104,15 @@ def build_deterioration_features(windows: pd.DataFrame, vitals: pd.DataFrame, la
 
 def feature_groups(columns) -> dict:
     """Split feature columns into named groups so ablations can pick them (for example snapshot vs trend)."""
-    groups = {k: [] for k in ["context", "vitals_snapshot", "vitals_trend", "labs_snapshot", "labs_trend",
-                              "labs_extra_snapshot", "labs_extra_trend", "scores"]}
+    groups = {k: [] for k in ["context", "vitals_snapshot", "vitals_trend", "vitals_stay", "labs_snapshot",
+                              "labs_trend", "labs_extra_snapshot", "labs_extra_trend", "scores"]}
     core, extra = set(LABS_CORE), set(LABS_EXTRA)
+    context = {"age", "male", "first_careunit", "hours_since_icu_admit", "on_vent",     # deterioration
+               "last_careunit", "icu_los_h", "hours_hosp_admit_to_icu_discharge", "n_prior_icu_stays",   # readmission
+               "hours_since_prev_icu_discharge", "ever_ventilated", "vent_hours", "on_vent_at_discharge",
+               "hours_since_extubation"}
     for col in columns:
-        if col in ("age", "male", "first_careunit", "hours_since_icu_admit", "on_vent"):
+        if col in context:
             groups["context"].append(col)
         elif col in ("news2", "mews"):
             groups["scores"].append(col)
@@ -117,7 +121,9 @@ def feature_groups(columns) -> dict:
         elif "__" in col:
             var, name = col.split("__", 1)
             kind = "snapshot" if name in SNAPSHOT_NAMES else "trend"
-            if var in VITAL_VARS:
+            if var in VITAL_VARS and name.startswith("stay_"):
+                groups["vitals_stay"].append(col)            # whole-stay summaries (readmission only)
+            elif var in VITAL_VARS:
                 groups[f"vitals_{kind}"].append(col)
             elif var in core:
                 groups[f"labs_{kind}"].append(col)

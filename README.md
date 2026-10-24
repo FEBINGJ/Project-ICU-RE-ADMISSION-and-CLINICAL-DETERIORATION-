@@ -72,7 +72,7 @@ Patient data stays in `data/` and is **never pushed to GitHub**. Many clinical d
 - [x] Phase 1: Literature review and research gap
 - [x] Phase 2: Data understanding (EDA)
 - [x] Phase 3: Cohort and label definition
-- [ ] Phase 4: Preprocessing and trend features (part A, deterioration features: done; part B, readmission features and LSTM arrays: next)
+- [x] Phase 4: Preprocessing and trend features
 - [ ] Phase 5: Modeling
 - [ ] Phase 6: Explainability
 - [ ] Phase 7: Backend
