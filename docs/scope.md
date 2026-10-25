@@ -108,6 +108,17 @@ Computed in `notebooks/01_eda_mimic_demo.ipynb`; label logic in `ml/data/mimic_d
 | Dashboard consequence | Show the calibrated risk with NEWS2/MEWS beside it and a research-prototype notice; never show raw model probabilities as "% risk" |
 | Details | docs/results_part_a.md, results_part_b.md, results_part_c.md, model_card.md |
 
+## Phase 6 outcome (completed 2026-10-25)
+
+| Item | Result |
+|---|---|
+| Risk bands | High = at or above the alert threshold; Moderate = below it but at or above the cut-off that catches 80% of events; Low = below. Supported for deterioration only (observed rates 3.3%, 3.8%, 5.3%, gap not confirmed); not shown for readmission (rates do not rise) |
+| NEWS2 reference bands | Standard clinical bands (0-4, 5-6, 7+) separate observed risk better than our bands; shown on the dashboard as the reference |
+| Explanations | SHAP on the two saved XGBoost models, 5 factors per prediction (adjustable), plain-language names, direction and relative size only, written explanation and warnings |
+| Stability | Top inputs change between refits (rank correlation about 0.5); only breathing-rate variability is stable; types of information (trends) are stable |
+| Demo caveat | Replay of dataset patients must use cross-validated predictions; saved models are for new patients |
+| Details | docs/explainability.md |
+
 ## Known limitations of this project
 - Small cohort (100 patients); results are a proof of concept, not clinically validated
 - Few readmission events, so estimates will have wide uncertainty

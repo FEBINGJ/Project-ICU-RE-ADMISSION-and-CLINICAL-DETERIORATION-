@@ -1,0 +1,934 @@
+{
+ "deterioration": {
+  "highest score": {
+   "row": 916,
+   "explanation": {
+    "task": "deterioration",
+    "risk": 0.10871469680356291,
+    "risk_percent": 10.9,
+    "raw_score": 0.9426054954528809,
+    "base_score": 0.37731751799583435,
+    "alert": 1,
+    "band": null,
+    "band_note": "Risk bands are not shown for this model: in cross-validation the observed event rate did not rise reliably from low to high scores.",
+    "factors": [
+     {
+      "feature": "platelets__last",
+      "label": "Latest platelet count",
+      "value": 42.0,
+      "value_text": "42 K/\u00b5L",
+      "group": "Latest lab results",
+      "note": "",
+      "contribution": 0.47912928462028503,
+      "direction": "raises",
+      "share": 0.1221146360039711,
+      "strength": "large"
+     },
+     {
+      "feature": "gcs__mean_24h",
+      "label": "Average Glasgow Coma Scale score over the last 24 h",
+      "value": 3.5,
+      "value_text": "4 points",
+      "group": "Vital-sign trends",
+      "note": "",
+      "contribution": 0.24648869037628174,
+      "direction": "raises",
+      "share": 0.06282203644514084,
+      "strength": "medium"
+     },
+     {
+      "feature": "hr__max_24h",
+      "label": "Highest heart rate in the last 24 h",
+      "value": 101.0,
+      "value_text": "101 bpm",
+      "group": "Vital-sign trends",
+      "note": "",
+      "contribution": 0.1847343146800995,
+      "direction": "raises",
+      "share": 0.04708283394575119,
+      "strength": "medium"
+     },
+     {
+      "feature": "rr__std_24h",
+      "label": "Variability (standard deviation) of breathing rate over the last 24 h",
+      "value": 7.322065843827401,
+      "value_text": "7 breaths/min",
+      "group": "Vital-sign trends",
+      "note": "",
+      "contribution": 0.1799139380455017,
+      "direction": "raises",
+      "share": 0.045854274183511734,
+      "strength": "medium"
+     },
+     {
+      "feature": "gcs__max_12h",
+      "label": "Highest Glasgow Coma Scale score in the last 12 h",
+      "value": 3.0,
+      "value_text": "3 points",
+      "group": "Vital-sign trends",
+      "note": "",
+      "contribution": 0.16014640033245087,
+      "direction": "raises",
+      "share": 0.04081616550683975,
+      "strength": "medium"
+     },
+     {
+      "feature": "map__std_24h",
+      "label": "Variability (standard deviation) of mean blood pressure over the last 24 h",
+      "value": 23.536538848536352,
+      "value_text": "24 mmHg",
+      "group": "Vital-sign trends",
+      "note": "",
+      "contribution": 0.15909318625926971,
+      "direction": "raises",
+      "share": 0.04054773598909378,
+      "strength": "medium"
+     },
+     {
+      "feature": "spo2__mean_24h",
+      "label": "Average oxygen saturation (SpO2) over the last 24 h",
+      "value": 94.65217391304348,
+      "value_text": "95 %",
+      "group": "Vital-sign trends",
+      "note": "",
+      "contribution": 0.13929259777069092,
+      "direction": "raises",
+      "share": 0.03550120070576668,
+      "strength": "small"
+     },
+     {
+      "feature": "phosphate__last",
+      "label": "Latest phosphate",
+      "value": 6.7,
+      "value_text": "6.7 mg/dL",
+      "group": "Latest lab results",
+      "note": "",
+      "contribution": 0.13916708528995514,
+      "direction": "raises",
+      "share": 0.035469211637973785,
+      "strength": "small"
+     }
+    ],
+    "groups": [
+     {
+      "group": "Vital-sign trends",
+      "net_contribution": 1.3925009167869575,
+      "direction": "raises"
+     },
+     {
+      "group": "Latest lab results",
+      "net_contribution": 0.7439526338130236,
+      "direction": "raises"
+     },
+     {
+      "group": "Lab trends (24 h)",
+      "net_contribution": 0.27606480894610286,
+      "direction": "raises"
+     },
+     {
+      "group": "Latest vital signs",
+      "net_contribution": 0.0536960982135497,
+      "direction": "raises"
+     },
+     {
+      "group": "Patient and stay context",
+      "net_contribution": -0.04459967417642474,
+      "direction": "lowers"
+     },
+     {
+      "group": "Measurement pattern",
+      "net_contribution": -0.00023428414715453982,
+      "direction": "lowers"
+     }
+    ],
+    "rest": {
+     "n_inputs": 225,
+     "net_contribution": 0.7334149479866028
+    },
+    "narrative": "The model estimates a 10.9% chance of starting invasive ventilation or dying within the next 24 hours (the average in the training data is 4.4%). Risk bands are not shown for this model: in cross-validation the observed event rate did not rise reliably from low to high scores.\n\nFactors that pushed the score UP: Latest platelet count (42 K/\u00b5L), large influence; Average Glasgow Coma Scale score over the last 24 h (4 points), medium influence; Highest heart rate in the last 24 h (101 bpm), medium influence; Variability (standard deviation) of breathing rate over the last 24 h (7 breaths/min), medium influence; Highest Glasgow Coma Scale score in the last 12 h (3 points), medium influence; Variability (standard deviation) of mean blood pressure over the last 24 h (24 mmHg), medium influence; Average oxygen saturation (SpO2) over the last 24 h (95 %), small influence; Latest phosphate (6.7 mg/dL), small influence.\n\nFactors that pushed the score DOWN: none among the top factors.\n\nThe 8 factors above make up 43% of everything that moves this patient's score; the other 225 inputs together raise it. \n\nBy type of information, the biggest net pushes are: vital-sign trends pushed the score up; latest lab results pushed the score up; lab trends (24 h) pushed the score up.\n\nRemember: Model discrimination is close to chance (cross-validated AUROC 0.58, 95% range 0.47 to 0.70): use as context, not as a decision.",
+    "reading_guide": "The model starts from an average score. Each factor below moves the score up (raises the risk) or down (lowers it); all factors together, including the many small ones, give this patient's score. Sizes are relative to each other. They show what the model used, not what caused the outcome.",
+    "warnings": [
+     "Model discrimination is close to chance (cross-validated AUROC 0.58, 95% range 0.47 to 0.70): use as context, not as a decision."
+    ]
+   }
+  },
+  "median score": {
+   "row": 393,
+   "explanation": {
+    "task": "deterioration",
+    "risk": 0.04447595611034822,
+    "risk_percent": 4.4,
+    "raw_score": 0.12804506719112396,
+    "base_score": 0.37731751799583435,
+    "alert": 1,
+    "band": null,
+    "band_note": "Risk bands are not shown for this model: in cross-validation the observed event rate did not rise reliably from low to high scores.",
+    "factors": [
+     {
+      "feature": "rr__std_24h",
+      "label": "Variability (standard deviation) of breathing rate over the last 24 h",
+      "value": 1.1547005383792515,
+      "value_text": "1 breaths/min",
+      "group": "Vital-sign trends",
+      "note": "",
+      "contribution": -0.41357022523880005,
+      "direction": "lowers",
+      "share": 0.08431500196456909,
+      "strength": "medium"
+     },
+     {
+      "feature": "platelets__last",
+      "label": "Latest platelet count",
+      "value": 260.0,
+      "value_text": "260 K/\u00b5L",
+      "group": "Latest lab results",
+      "note": "",
+      "contribution": -0.3681788742542267,
+      "direction": "lowers",
+      "share": 0.07506102323532104,
+      "strength": "medium"
+     },
+     {
+      "feature": "temp__std_24h",
+      "label": "Variability (standard deviation) of temperature over the last 24 h",
+      "value": null,
+      "value_text": "no value: too few measurements in this window",
+      "group": "Vital-sign trends",
+      "note": "No value was recorded. The model treats 'not recorded' as information, which mostly reflects how closely staff monitor the patient, not physiology.",
+      "contribution": -0.25597018003463745,
+      "direction": "lowers",
+      "share": 0.05218491330742836,
+      "strength": "medium"
+     },
+     {
+      "feature": "sbp__min_24h",
+      "label": "Lowest systolic blood pressure in the last 24 h",
+      "value": 96.0,
+      "value_text": "96 mmHg",
+      "group": "Vital-sign trends",
+      "note": "",
+      "contribution": -0.18470631539821625,
+      "direction": "lowers",
+      "share": 0.0376562736928463,
+      "strength": "small"
+     },
+     {
+      "feature": "age",
+      "label": "Age",
+      "value": 53.0,
+      "value_text": "53 years",
+      "group": "Patient and stay context",
+      "note": "",
+      "contribution": -0.1739526391029358,
+      "direction": "lowers",
+      "share": 0.035463910549879074,
+      "strength": "small"
+     },
+     {
+      "feature": "sbp__mean_24h",
+      "label": "Average systolic blood pressure over the last 24 h",
+      "value": 99.5,
+      "value_text": "100 mmHg",
+      "group": "Vital-sign trends",
+      "note": "",
+      "contribution": -0.14420057833194733,
+      "direction": "lowers",
+      "share": 0.029398325830698013,
+      "strength": "small"
+     },
+     {
+      "feature": "hr__max_24h",
+      "label": "Highest heart rate in the last 24 h",
+      "value": 120.0,
+      "value_text": "120 bpm",
+      "group": "Vital-sign trends",
+      "note": "",
+      "contribution": -0.14006589353084564,
+      "direction": "lowers",
+      "share": 0.028555383905768394,
+      "strength": "small"
+     },
+     {
+      "feature": "gcs__mean_12h",
+      "label": "Average Glasgow Coma Scale score over the last 12 h",
+      "value": 15.0,
+      "value_text": "15 points",
+      "group": "Vital-sign trends",
+      "note": "",
+      "contribution": -0.1305166631937027,
+      "direction": "lowers",
+      "share": 0.026608571410179138,
+      "strength": "small"
+     }
+    ],
+    "groups": [
+     {
+      "group": "Vital-sign trends",
+      "net_contribution": -2.1758638567698654,
+      "direction": "lowers"
+     },
+     {
+      "group": "Lab trends (24 h)",
+      "net_contribution": 0.3891941364854574,
+      "direction": "raises"
+     },
+     {
+      "group": "Latest lab results",
+      "net_contribution": -0.23048344999551773,
+      "direction": "lowers"
+     },
+     {
+      "group": "Patient and stay context",
+      "net_contribution": -0.17218908574432135,
+      "direction": "lowers"
+     },
+     {
+      "group": "Latest vital signs",
+      "net_contribution": -0.08257274987408891,
+      "direction": "lowers"
+     },
+     {
+      "group": "Measurement pattern",
+      "net_contribution": -0.023757532064337283,
+      "direction": "lowers"
+     }
+    ],
+    "rest": {
+     "n_inputs": 225,
+     "net_contribution": -0.48451104760169983
+    },
+    "narrative": "The model estimates a 4.4% chance of starting invasive ventilation or dying within the next 24 hours (the average in the training data is 4.4%). Risk bands are not shown for this model: in cross-validation the observed event rate did not rise reliably from low to high scores.\n\nFactors that pushed the score UP: none among the top factors.\n\nFactors that pushed the score DOWN: Variability (standard deviation) of breathing rate over the last 24 h (1 breaths/min), medium influence; Latest platelet count (260 K/\u00b5L), medium influence; Variability (standard deviation) of temperature over the last 24 h (no value: too few measurements in this window), medium influence; Lowest systolic blood pressure in the last 24 h (96 mmHg), small influence; Age (53 years), small influence; Average systolic blood pressure over the last 24 h (100 mmHg), small influence; Highest heart rate in the last 24 h (120 bpm), small influence; Average Glasgow Coma Scale score over the last 12 h (15 points), small influence.\n\nThe 8 factors above make up 37% of everything that moves this patient's score; the other 225 inputs together lower it. \n\nBy type of information, the biggest net pushes are: vital-sign trends pushed the score down; lab trends (24 h) pushed the score up; latest lab results pushed the score down.\n\nRemember: Model discrimination is close to chance (cross-validated AUROC 0.58, 95% range 0.47 to 0.70): use as context, not as a decision. One or more top factors reflect how often or whether something was recorded (shown with a note), which mostly describes how closely staff monitor the patient, not the patient's physiology.",
+    "reading_guide": "The model starts from an average score. Each factor below moves the score up (raises the risk) or down (lowers it); all factors together, including the many small ones, give this patient's score. Sizes are relative to each other. They show what the model used, not what caused the outcome.",
+    "warnings": [
+     "Model discrimination is close to chance (cross-validated AUROC 0.58, 95% range 0.47 to 0.70): use as context, not as a decision.",
+     "One or more top factors reflect how often or whether something was recorded (shown with a note), which mostly describes how closely staff monitor the patient, not the patient's physiology."
+    ]
+   }
+  },
+  "lowest score": {
+   "row": 1785,
+   "explanation": {
+    "task": "deterioration",
+    "risk": 0.022656848766987293,
+    "risk_percent": 2.3,
+    "raw_score": 0.004813737235963345,
+    "base_score": 0.37731751799583435,
+    "alert": 0,
+    "band": null,
+    "band_note": "Risk bands are not shown for this model: in cross-validation the observed event rate did not rise reliably from low to high scores.",
+    "factors": [
+     {
+      "feature": "sbp__min_24h",
+      "label": "Lowest systolic blood pressure in the last 24 h",
+      "value": 106.0,
+      "value_text": "106 mmHg",
+      "group": "Vital-sign trends",
+      "note": "",
+      "contribution": -0.6193503141403198,
+      "direction": "lowers",
+      "share": 0.09171297401189804,
+      "strength": "medium"
+     },
+     {
+      "feature": "rr__std_24h",
+      "label": "Variability (standard deviation) of breathing rate over the last 24 h",
+      "value": 3.3148610971754535,
+      "value_text": "3 breaths/min",
+      "group": "Vital-sign trends",
+      "note": "",
+      "contribution": -0.5138034820556641,
+      "direction": "lowers",
+      "share": 0.07608366757631302,
+      "strength": "medium"
+     },
+     {
+      "feature": "calcium__last",
+      "label": "Latest calcium",
+      "value": 6.8,
+      "value_text": "6.8 mg/dL",
+      "group": "Latest lab results",
+      "note": "",
+      "contribution": -0.42981642484664917,
+      "direction": "lowers",
+      "share": 0.06364692002534866,
+      "strength": "medium"
+     },
+     {
+      "feature": "potassium__min_24h",
+      "label": "Lowest potassium in the last 24 h",
+      "value": 3.3,
+      "value_text": "3.3 mmol/L",
+      "group": "Lab trends (24 h)",
+      "note": "",
+      "contribution": -0.40845155715942383,
+      "direction": "lowers",
+      "share": 0.06048322841525078,
+      "strength": "medium"
+     },
+     {
+      "feature": "platelets__last",
+      "label": "Latest platelet count",
+      "value": 176.0,
+      "value_text": "176 K/\u00b5L",
+      "group": "Latest lab results",
+      "note": "",
+      "contribution": -0.35538241267204285,
+      "direction": "lowers",
+      "share": 0.05262478440999985,
+      "strength": "medium"
+     },
+     {
+      "feature": "calcium__max_24h",
+      "label": "Highest calcium in the last 24 h",
+      "value": 6.8,
+      "value_text": "6.8 mg/dL",
+      "group": "Lab trends (24 h)",
+      "note": "",
+      "contribution": -0.29810166358947754,
+      "direction": "lowers",
+      "share": 0.04414268955588341,
+      "strength": "medium"
+     },
+     {
+      "feature": "spo2__mean_24h",
+      "label": "Average oxygen saturation (SpO2) over the last 24 h",
+      "value": 98.21428571428571,
+      "value_text": "98 %",
+      "group": "Vital-sign trends",
+      "note": "",
+      "contribution": -0.18659278750419617,
+      "direction": "lowers",
+      "share": 0.027630532160401344,
+      "strength": "small"
+     },
+     {
+      "feature": "gcs__max_24h",
+      "label": "Highest Glasgow Coma Scale score in the last 24 h",
+      "value": 15.0,
+      "value_text": "15 points",
+      "group": "Vital-sign trends",
+      "note": "",
+      "contribution": -0.1742166131734848,
+      "direction": "lowers",
+      "share": 0.025797877460718155,
+      "strength": "small"
+     }
+    ],
+    "groups": [
+     {
+      "group": "Vital-sign trends",
+      "net_contribution": -3.0977537362778094,
+      "direction": "lowers"
+     },
+     {
+      "group": "Lab trends (24 h)",
+      "net_contribution": -1.332721715734806,
+      "direction": "lowers"
+     },
+     {
+      "group": "Latest lab results",
+      "net_contribution": -1.0190833189990371,
+      "direction": "lowers"
+     },
+     {
+      "group": "Patient and stay context",
+      "net_contribution": -0.27844519913196564,
+      "direction": "lowers"
+     },
+     {
+      "group": "Measurement pattern",
+      "net_contribution": 0.04691856144927442,
+      "direction": "raises"
+     },
+     {
+      "group": "Latest vital signs",
+      "net_contribution": -0.027688254311215132,
+      "direction": "lowers"
+     }
+    ],
+    "rest": {
+     "n_inputs": 225,
+     "net_contribution": -2.7230589389801025
+    },
+    "narrative": "The model estimates a 2.3% chance of starting invasive ventilation or dying within the next 24 hours (the average in the training data is 4.4%). Risk bands are not shown for this model: in cross-validation the observed event rate did not rise reliably from low to high scores.\n\nFactors that pushed the score UP: none among the top factors.\n\nFactors that pushed the score DOWN: Lowest systolic blood pressure in the last 24 h (106 mmHg), medium influence; Variability (standard deviation) of breathing rate over the last 24 h (3 breaths/min), medium influence; Latest calcium (6.8 mg/dL), medium influence; Lowest potassium in the last 24 h (3.3 mmol/L), medium influence; Latest platelet count (176 K/\u00b5L), medium influence; Highest calcium in the last 24 h (6.8 mg/dL), medium influence; Average oxygen saturation (SpO2) over the last 24 h (98 %), small influence; Highest Glasgow Coma Scale score in the last 24 h (15 points), small influence.\n\nThe 8 factors above make up 44% of everything that moves this patient's score; the other 225 inputs together lower it. \n\nBy type of information, the biggest net pushes are: vital-sign trends pushed the score down; lab trends (24 h) pushed the score down; latest lab results pushed the score down.\n\nRemember: Model discrimination is close to chance (cross-validated AUROC 0.58, 95% range 0.47 to 0.70): use as context, not as a decision.",
+    "reading_guide": "The model starts from an average score. Each factor below moves the score up (raises the risk) or down (lowers it); all factors together, including the many small ones, give this patient's score. Sizes are relative to each other. They show what the model used, not what caused the outcome.",
+    "warnings": [
+     "Model discrimination is close to chance (cross-validated AUROC 0.58, 95% range 0.47 to 0.70): use as context, not as a decision."
+    ]
+   }
+  }
+ },
+ "readmission": {
+  "highest score": {
+   "row": 50,
+   "explanation": {
+    "task": "readmission",
+    "risk": 0.5830219334703048,
+    "risk_percent": 58.3,
+    "raw_score": 0.9389522671699524,
+    "base_score": 0.5808943510055542,
+    "alert": 1,
+    "band": null,
+    "band_note": "Risk bands are not shown for this model: in cross-validation the observed event rate did not rise reliably from low to high scores.",
+    "factors": [
+     {
+      "feature": "map__stay_mean",
+      "label": "Average mean blood pressure over the whole ICU stay",
+      "value": 99.41025641025641,
+      "value_text": "99 mmHg",
+      "group": "Whole-stay vitals",
+      "note": "",
+      "contribution": 0.2841036319732666,
+      "direction": "raises",
+      "share": 0.07219678908586502,
+      "strength": "medium"
+     },
+     {
+      "feature": "spo2__last",
+      "label": "Latest oxygen saturation (SpO2)",
+      "value": 100.0,
+      "value_text": "100 %",
+      "group": "Latest vital signs",
+      "note": "",
+      "contribution": 0.19746066629886627,
+      "direction": "raises",
+      "share": 0.05017896741628647,
+      "strength": "medium"
+     },
+     {
+      "feature": "spo2__std_24h",
+      "label": "Variability (standard deviation) of oxygen saturation (SpO2) over the last 24 h",
+      "value": 0.8812869377601524,
+      "value_text": "1 %",
+      "group": "Vital-sign trends",
+      "note": "",
+      "contribution": -0.14189133048057556,
+      "direction": "lowers",
+      "share": 0.03605761379003525,
+      "strength": "small"
+     },
+     {
+      "feature": "rr__mean_24h",
+      "label": "Average breathing rate over the last 24 h",
+      "value": 20.416666666666668,
+      "value_text": "20 breaths/min",
+      "group": "Vital-sign trends",
+      "note": "",
+      "contribution": 0.12658369541168213,
+      "direction": "raises",
+      "share": 0.03216761723160744,
+      "strength": "small"
+     },
+     {
+      "feature": "gcs__mean_6h",
+      "label": "Average Glasgow Coma Scale score over the last 6 h",
+      "value": 11.0,
+      "value_text": "11 points",
+      "group": "Vital-sign trends",
+      "note": "",
+      "contribution": 0.11783093959093094,
+      "direction": "raises",
+      "share": 0.029943354427814484,
+      "strength": "small"
+     },
+     {
+      "feature": "platelets__last",
+      "label": "Latest platelet count",
+      "value": 430.0,
+      "value_text": "430 K/\u00b5L",
+      "group": "Latest lab results",
+      "note": "",
+      "contribution": 0.11658620834350586,
+      "direction": "raises",
+      "share": 0.029627041891217232,
+      "strength": "small"
+     },
+     {
+      "feature": "platelets__min_24h",
+      "label": "Lowest platelet count in the last 24 h",
+      "value": 430.0,
+      "value_text": "430 K/\u00b5L",
+      "group": "Lab trends (24 h)",
+      "note": "",
+      "contribution": 0.11167680472135544,
+      "direction": "raises",
+      "share": 0.02837945707142353,
+      "strength": "small"
+     },
+     {
+      "feature": "potassium__min_24h",
+      "label": "Lowest potassium in the last 24 h",
+      "value": 4.0,
+      "value_text": "4.0 mmol/L",
+      "group": "Lab trends (24 h)",
+      "note": "",
+      "contribution": 0.10957542806863785,
+      "direction": "raises",
+      "share": 0.02784545347094536,
+      "strength": "small"
+     }
+    ],
+    "groups": [
+     {
+      "group": "Vital-sign trends",
+      "net_contribution": 0.8671251153573394,
+      "direction": "raises"
+     },
+     {
+      "group": "Whole-stay vitals",
+      "net_contribution": 0.6566297342069447,
+      "direction": "raises"
+     },
+     {
+      "group": "Lab trends (24 h)",
+      "net_contribution": 0.3275012222584337,
+      "direction": "raises"
+     },
+     {
+      "group": "Latest vital signs",
+      "net_contribution": 0.25708629633300006,
+      "direction": "raises"
+     },
+     {
+      "group": "Latest lab results",
+      "net_contribution": 0.08418473042547703,
+      "direction": "raises"
+     },
+     {
+      "group": "Measurement pattern",
+      "net_contribution": -0.07728185667656362,
+      "direction": "lowers"
+     },
+     {
+      "group": "Patient and stay context",
+      "net_contribution": 0.03696907393168658,
+      "direction": "raises"
+     }
+    ],
+    "rest": {
+     "n_inputs": 267,
+     "net_contribution": 1.2302883863449097
+    },
+    "narrative": "The model estimates a 58.3% chance of being readmitted to the ICU within 30 days of ICU discharge (the average in the training data is 16.4%). Risk bands are not shown for this model: in cross-validation the observed event rate did not rise reliably from low to high scores.\n\nFactors that pushed the score UP: Average mean blood pressure over the whole ICU stay (99 mmHg), medium influence; Latest oxygen saturation (SpO2) (100 %), medium influence; Average breathing rate over the last 24 h (20 breaths/min), small influence; Average Glasgow Coma Scale score over the last 6 h (11 points), small influence; Latest platelet count (430 K/\u00b5L), small influence; Lowest platelet count in the last 24 h (430 K/\u00b5L), small influence; Lowest potassium in the last 24 h (4.0 mmol/L), small influence.\n\nFactors that pushed the score DOWN: Variability (standard deviation) of oxygen saturation (SpO2) over the last 24 h (1 %), small influence.\n\nThe 8 factors above make up 31% of everything that moves this patient's score; the other 267 inputs together raise it. The score is spread over many small contributions rather than a few strong ones, which is typical when a model has no strong signal to rely on.\n\nBy type of information, the biggest net pushes are: vital-sign trends pushed the score up; whole-stay vitals pushed the score up; lab trends (24 h) pushed the score up.\n\nRemember: Model discrimination is close to chance (cross-validated AUROC 0.59, 95% range 0.43 to 0.74): use as context, not as a decision.",
+    "reading_guide": "The model starts from an average score. Each factor below moves the score up (raises the risk) or down (lowers it); all factors together, including the many small ones, give this patient's score. Sizes are relative to each other. They show what the model used, not what caused the outcome.",
+    "warnings": [
+     "Model discrimination is close to chance (cross-validated AUROC 0.59, 95% range 0.43 to 0.74): use as context, not as a decision."
+    ]
+   }
+  },
+  "median score": {
+   "row": 109,
+   "explanation": {
+    "task": "readmission",
+    "risk": 0.1313344198861829,
+    "risk_percent": 13.1,
+    "raw_score": 0.13608138263225555,
+    "base_score": 0.5808943510055542,
+    "alert": 1,
+    "band": null,
+    "band_note": "Risk bands are not shown for this model: in cross-validation the observed event rate did not rise reliably from low to high scores.",
+    "factors": [
+     {
+      "feature": "spo2__last",
+      "label": "Latest oxygen saturation (SpO2)",
+      "value": 96.0,
+      "value_text": "96 %",
+      "group": "Latest vital signs",
+      "note": "",
+      "contribution": -0.2510274052619934,
+      "direction": "lowers",
+      "share": 0.052757300436496735,
+      "strength": "medium"
+     },
+     {
+      "feature": "spo2__std_24h",
+      "label": "Variability (standard deviation) of oxygen saturation (SpO2) over the last 24 h",
+      "value": 1.9926334924652145,
+      "value_text": "2 %",
+      "group": "Vital-sign trends",
+      "note": "",
+      "contribution": -0.22493061423301697,
+      "direction": "lowers",
+      "share": 0.04727265611290932,
+      "strength": "medium"
+     },
+     {
+      "feature": "phosphate__min_24h",
+      "label": "Lowest phosphate in the last 24 h",
+      "value": 2.1,
+      "value_text": "2.1 mg/dL",
+      "group": "Lab trends (24 h)",
+      "note": "",
+      "contribution": -0.1932319551706314,
+      "direction": "lowers",
+      "share": 0.04061068966984749,
+      "strength": "medium"
+     },
+     {
+      "feature": "map__stay_mean",
+      "label": "Average mean blood pressure over the whole ICU stay",
+      "value": 79.73333333333333,
+      "value_text": "80 mmHg",
+      "group": "Whole-stay vitals",
+      "note": "",
+      "contribution": -0.18957212567329407,
+      "direction": "lowers",
+      "share": 0.03984152153134346,
+      "strength": "small"
+     },
+     {
+      "feature": "phosphate__last",
+      "label": "Latest phosphate",
+      "value": 2.1,
+      "value_text": "2.1 mg/dL",
+      "group": "Latest lab results",
+      "note": "",
+      "contribution": -0.17263971269130707,
+      "direction": "lowers",
+      "share": 0.03628291189670563,
+      "strength": "small"
+     },
+     {
+      "feature": "temp__slope_12h",
+      "label": "Trend of temperature over the last 12 h",
+      "value": -0.07132132132132153,
+      "value_text": "-0.07 \u00b0C per hour",
+      "group": "Vital-sign trends",
+      "note": "",
+      "contribution": -0.146336629986763,
+      "direction": "lowers",
+      "share": 0.03075491078197956,
+      "strength": "small"
+     },
+     {
+      "feature": "potassium__min_24h",
+      "label": "Lowest potassium in the last 24 h",
+      "value": 3.7,
+      "value_text": "3.7 mmol/L",
+      "group": "Lab trends (24 h)",
+      "note": "",
+      "contribution": -0.12717771530151367,
+      "direction": "lowers",
+      "share": 0.026728367432951927,
+      "strength": "small"
+     },
+     {
+      "feature": "temp__delta_24h",
+      "label": "Change in temperature over the last 24 h (last value minus first)",
+      "value": -0.94444444444445,
+      "value_text": "-0.9 \u00b0C",
+      "group": "Vital-sign trends",
+      "note": "",
+      "contribution": -0.1263837069272995,
+      "direction": "lowers",
+      "share": 0.026561494916677475,
+      "strength": "small"
+     }
+    ],
+    "groups": [
+     {
+      "group": "Vital-sign trends",
+      "net_contribution": -0.7186434210743755,
+      "direction": "lowers"
+     },
+     {
+      "group": "Lab trends (24 h)",
+      "net_contribution": -0.7052873112261295,
+      "direction": "lowers"
+     },
+     {
+      "group": "Whole-stay vitals",
+      "net_contribution": -0.33692382927984,
+      "direction": "lowers"
+     },
+     {
+      "group": "Latest vital signs",
+      "net_contribution": -0.27184370066970587,
+      "direction": "lowers"
+     },
+     {
+      "group": "Latest lab results",
+      "net_contribution": -0.2082893664482981,
+      "direction": "lowers"
+     },
+     {
+      "group": "Measurement pattern",
+      "net_contribution": -0.1025515841320157,
+      "direction": "lowers"
+     },
+     {
+      "group": "Patient and stay context",
+      "net_contribution": -0.08558077737689018,
+      "direction": "lowers"
+     }
+    ],
+    "rest": {
+     "n_inputs": 267,
+     "net_contribution": -0.9978201985359192
+    },
+    "narrative": "The model estimates a 13.1% chance of being readmitted to the ICU within 30 days of ICU discharge (the average in the training data is 16.4%). Risk bands are not shown for this model: in cross-validation the observed event rate did not rise reliably from low to high scores.\n\nFactors that pushed the score UP: none among the top factors.\n\nFactors that pushed the score DOWN: Latest oxygen saturation (SpO2) (96 %), medium influence; Variability (standard deviation) of oxygen saturation (SpO2) over the last 24 h (2 %), medium influence; Lowest phosphate in the last 24 h (2.1 mg/dL), medium influence; Average mean blood pressure over the whole ICU stay (80 mmHg), small influence; Latest phosphate (2.1 mg/dL), small influence; Trend of temperature over the last 12 h (-0.07 \u00b0C per hour), small influence; Lowest potassium in the last 24 h (3.7 mmol/L), small influence; Change in temperature over the last 24 h (last value minus first) (-0.9 \u00b0C), small influence.\n\nThe 8 factors above make up 30% of everything that moves this patient's score; the other 267 inputs together lower it. The score is spread over many small contributions rather than a few strong ones, which is typical when a model has no strong signal to rely on.\n\nBy type of information, the biggest net pushes are: vital-sign trends pushed the score down; lab trends (24 h) pushed the score down; whole-stay vitals pushed the score down.\n\nRemember: Model discrimination is close to chance (cross-validated AUROC 0.59, 95% range 0.43 to 0.74): use as context, not as a decision.",
+    "reading_guide": "The model starts from an average score. Each factor below moves the score up (raises the risk) or down (lowers it); all factors together, including the many small ones, give this patient's score. Sizes are relative to each other. They show what the model used, not what caused the outcome.",
+    "warnings": [
+     "Model discrimination is close to chance (cross-validated AUROC 0.59, 95% range 0.43 to 0.74): use as context, not as a decision."
+    ]
+   }
+  },
+  "lowest score": {
+   "row": 90,
+   "explanation": {
+    "task": "readmission",
+    "risk": 0.06480860230964235,
+    "risk_percent": 6.5,
+    "raw_score": 0.03062286786735058,
+    "base_score": 0.5808943510055542,
+    "alert": 0,
+    "band": null,
+    "band_note": "Risk bands are not shown for this model: in cross-validation the observed event rate did not rise reliably from low to high scores.",
+    "factors": [
+     {
+      "feature": "rr__mean_24h",
+      "label": "Average breathing rate over the last 24 h",
+      "value": 15.961538461538462,
+      "value_text": "16 breaths/min",
+      "group": "Vital-sign trends",
+      "note": "",
+      "contribution": -0.29337671399116516,
+      "direction": "lowers",
+      "share": 0.06148703023791313,
+      "strength": "medium"
+     },
+     {
+      "feature": "spo2__last",
+      "label": "Latest oxygen saturation (SpO2)",
+      "value": 93.0,
+      "value_text": "93 %",
+      "group": "Latest vital signs",
+      "note": "",
+      "contribution": -0.2880963087081909,
+      "direction": "lowers",
+      "share": 0.06038033962249756,
+      "strength": "medium"
+     },
+     {
+      "feature": "map__stay_mean",
+      "label": "Average mean blood pressure over the whole ICU stay",
+      "value": 73.5,
+      "value_text": "74 mmHg",
+      "group": "Whole-stay vitals",
+      "note": "",
+      "contribution": -0.21929976344108582,
+      "direction": "lowers",
+      "share": 0.04596169292926788,
+      "strength": "medium"
+     },
+     {
+      "feature": "rr__stay_mean",
+      "label": "Average breathing rate over the whole ICU stay",
+      "value": 15.961538461538462,
+      "value_text": "16 breaths/min",
+      "group": "Whole-stay vitals",
+      "note": "",
+      "contribution": -0.1901419758796692,
+      "direction": "lowers",
+      "share": 0.03985069319605827,
+      "strength": "small"
+     },
+     {
+      "feature": "platelets__min_24h",
+      "label": "Lowest platelet count in the last 24 h",
+      "value": 130.0,
+      "value_text": "130 K/\u00b5L",
+      "group": "Lab trends (24 h)",
+      "note": "",
+      "contribution": -0.18878459930419922,
+      "direction": "lowers",
+      "share": 0.03956620767712593,
+      "strength": "small"
+     },
+     {
+      "feature": "platelets__last",
+      "label": "Latest platelet count",
+      "value": 130.0,
+      "value_text": "130 K/\u00b5L",
+      "group": "Latest lab results",
+      "note": "",
+      "contribution": -0.17579129338264465,
+      "direction": "lowers",
+      "share": 0.03684302046895027,
+      "strength": "small"
+     },
+     {
+      "feature": "hemoglobin__max_24h",
+      "label": "Highest hemoglobin in the last 24 h",
+      "value": 12.1,
+      "value_text": "12.1 g/dL",
+      "group": "Lab trends (24 h)",
+      "note": "",
+      "contribution": -0.15628546476364136,
+      "direction": "lowers",
+      "share": 0.032754912972450256,
+      "strength": "small"
+     },
+     {
+      "feature": "phosphate__min_24h",
+      "label": "Lowest phosphate in the last 24 h",
+      "value": 2.3,
+      "value_text": "2.3 mg/dL",
+      "group": "Lab trends (24 h)",
+      "note": "",
+      "contribution": -0.15285822749137878,
+      "direction": "lowers",
+      "share": 0.03203662112355232,
+      "strength": "small"
+     }
+    ],
+    "groups": [
+     {
+      "group": "Vital-sign trends",
+      "net_contribution": -1.6053253987338394,
+      "direction": "lowers"
+     },
+     {
+      "group": "Lab trends (24 h)",
+      "net_contribution": -0.8624174494761974,
+      "direction": "lowers"
+     },
+     {
+      "group": "Whole-stay vitals",
+      "net_contribution": -0.5256803163792938,
+      "direction": "lowers"
+     },
+     {
+      "group": "Latest lab results",
+      "net_contribution": -0.5071443077176809,
+      "direction": "lowers"
+     },
+     {
+      "group": "Latest vital signs",
+      "net_contribution": -0.31881930958479643,
+      "direction": "lowers"
+     },
+     {
+      "group": "Measurement pattern",
+      "net_contribution": -0.11742220004089177,
+      "direction": "lowers"
+     },
+     {
+      "group": "Patient and stay context",
+      "net_contribution": -0.09899116517044604,
+      "direction": "lowers"
+     }
+    ],
+    "rest": {
+     "n_inputs": 267,
+     "net_contribution": -2.3711655139923096
+    },
+    "narrative": "The model estimates a 6.5% chance of being readmitted to the ICU within 30 days of ICU discharge (the average in the training data is 16.4%). Risk bands are not shown for this model: in cross-validation the observed event rate did not rise reliably from low to high scores.\n\nFactors that pushed the score UP: none among the top factors.\n\nFactors that pushed the score DOWN: Average breathing rate over the last 24 h (16 breaths/min), medium influence; Latest oxygen saturation (SpO2) (93 %), medium influence; Average mean blood pressure over the whole ICU stay (74 mmHg), medium influence; Average breathing rate over the whole ICU stay (16 breaths/min), small influence; Lowest platelet count in the last 24 h (130 K/\u00b5L), small influence; Latest platelet count (130 K/\u00b5L), small influence; Highest hemoglobin in the last 24 h (12.1 g/dL), small influence; Lowest phosphate in the last 24 h (2.3 mg/dL), small influence.\n\nThe 8 factors above make up 35% of everything that moves this patient's score; the other 267 inputs together lower it. The score is spread over many small contributions rather than a few strong ones, which is typical when a model has no strong signal to rely on.\n\nBy type of information, the biggest net pushes are: vital-sign trends pushed the score down; lab trends (24 h) pushed the score down; whole-stay vitals pushed the score down.\n\nRemember: Model discrimination is close to chance (cross-validated AUROC 0.59, 95% range 0.43 to 0.74): use as context, not as a decision.",
+    "reading_guide": "The model starts from an average score. Each factor below moves the score up (raises the risk) or down (lowers it); all factors together, including the many small ones, give this patient's score. Sizes are relative to each other. They show what the model used, not what caused the outcome.",
+    "warnings": [
+     "Model discrimination is close to chance (cross-validated AUROC 0.59, 95% range 0.43 to 0.74): use as context, not as a decision."
+    ]
+   }
+  }
+ }
+}

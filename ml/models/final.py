@@ -6,7 +6,10 @@ Run from the project root:   python -m ml.models.final
 For each task the saved file models/<task>_<model>.joblib holds
     model        the fitted classifier (single model, so SHAP explains exactly what is served)
     columns      the exact input columns, in order (care units one-hot encoded)
-    threshold    alert cut-off on the RAW score: the F1-best value from repeated 5-fold patient-grouped CV on all rows
+    threshold    alert cut-off on the RAW score (= the High band): the F1-best value from repeated 5-fold patient-grouped CV on all rows
+    threshold_moderate  cut-off between Low and Moderate: the highest score that still catches 80% of the events
+    bands_cv     observed event rate per band from the nested cross-validation (reports/tables/phase6_bands.json)
+    bands_supported  False when the observed event rate does not rise from Low to High (the dashboard must not show bands then)
     platt        (intercept, slope) that turns the raw score into a calibrated risk, learned on the same CV predictions
     cv           the cross-validated scores reported in docs/results_part_c.md (the honest estimate of performance)
 The cross-validation models are not reused; this model is a fresh fit. Its own score on the training data is
@@ -21,9 +24,10 @@ import sklearn
 import xgboost
 
 from ml.config import MODEL_DIR, PROJECT_ROOT, RANDOM_SEED
+from ml.evaluation.bands import band_cutoffs
 from ml.evaluation.calibrated import apply_platt, fit_platt
 from ml.evaluation.folds import inner_splits
-from ml.evaluation.metrics import ScoreView, best_f1_threshold
+from ml.evaluation.metrics import ScoreView
 from ml.features.windows import feature_groups
 from ml.models.factory import build
 from ml.models.feature_sets import design_matrix
@@ -47,14 +51,17 @@ def fit_final(task: str, model: str, seed: int = RANDOM_SEED) -> dict:
             idx.append(v)
             ps.append(b["fit_predict"](a, v, seed + 100 * r + k))
     idx, ps = np.concatenate(idx), np.concatenate(ps)
-    threshold = best_f1_threshold(y[idx], ps)
+    moderate_cutoff, threshold = band_cutoffs(y[idx], ps)                   # threshold = alert = High band
     platt = fit_platt(ps, y[idx])
     # 2) the model that will be served: fitted on every row
     clf = make_model(model, y, seed)
     clf.fit(X, y)
     cv = json.loads((TABLES / "part_c_results.json").read_text())[task]["models"][model]
+    bands_path = TABLES / "phase6_bands.json"
+    bands_cv = json.loads(bands_path.read_text())[task] if bands_path.exists() else None
     return dict(task=task, model_name=model, feature_set="C", model=clf, columns=b["columns"], raw_columns=b["raw_columns"],
-                threshold=float(threshold), platt=platt, prevalence=float(y.mean()), n_rows=int(len(y)),
+                threshold=float(threshold), threshold_moderate=float(moderate_cutoff), platt=platt,
+                bands_cv=bands_cv, bands_supported=bool(bands_cv and bands_cv["rises_low_to_high"]), prevalence=float(y.mean()), n_rows=int(len(y)),
                 n_positive=int(y.sum()), n_patients=int(len(np.unique(groups))),
                 cv=dict(auroc=cv["auroc"], auroc_ci=cv["auroc_ci"], f1=cv["f1"]),
                 settings=XGB_PARAMS if model == "xgboost" else RF_PARAMS, created=datetime.date.today().isoformat(),

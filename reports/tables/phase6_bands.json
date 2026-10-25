@@ -1,0 +1,152 @@
+{
+ "deterioration": {
+  "model": "xgboost",
+  "prevalence": 0.044310171198388724,
+  "bands": {
+   "Low": {
+    "share_of_rows": 0.12653575025176234,
+    "event_rate": 0.032430777327046974,
+    "event_rate_ci": [
+     0.0035421669973929,
+     0.08205733856590665
+    ],
+    "events": 8.1
+   },
+   "Moderate": {
+    "share_of_rows": 0.47442094662638473,
+    "event_rate": 0.037080047836375994,
+    "event_rate_ci": [
+     0.02042274288461367,
+     0.05467554909212747
+    ],
+    "events": 35.7
+   },
+   "High": {
+    "share_of_rows": 0.399043303121853,
+    "event_rate": 0.05552463629041736,
+    "event_rate_ci": [
+     0.03443829385857142,
+     0.08038642882254729
+    ],
+    "events": 44.2
+   }
+  },
+  "high_minus_low": 0.023093858963370385,
+  "high_minus_low_ci": [
+   -0.03256497923778454,
+   0.06442898738225111
+  ],
+  "rises_low_to_high": true,
+  "news2_standard_bands": {
+   "Low (0-4)": {
+    "share_of_rows": 0.24436090225563908,
+    "event_rate": 0.015384615384615385,
+    "event_rate_ci": [
+     0.0021406485551697446,
+     0.03668208849243332
+    ],
+    "events": 7.0
+   },
+   "Medium (5-6)": {
+    "share_of_rows": 0.2540279269602578,
+    "event_rate": 0.042283298097251586,
+    "event_rate_ci": [
+     0.01973170230263158,
+     0.0722915791853742
+    ],
+    "events": 20.0
+   },
+   "High (7+)": {
+    "share_of_rows": 0.5016111707841031,
+    "event_rate": 0.059957173447537475,
+    "event_rate_ci": [
+     0.03566106441541672,
+     0.09040740546356313
+    ],
+    "events": 56.0
+   },
+   "_rows_with_score": 0.9375629405840886
+  },
+  "news2_rises_low_to_high": true,
+  "news2_high_minus_low": 0.04457255806292209,
+  "news2_high_minus_low_ci": [
+   0.015019988034227147,
+   0.07956110167375989
+  ]
+ },
+ "readmission": {
+  "model": "xgboost",
+  "prevalence": 0.1640625,
+  "bands": {
+   "Low": {
+    "share_of_rows": 0.29609375,
+    "event_rate": 0.13791132237042938,
+    "event_rate_ci": [
+     0.03804204008391557,
+     0.24825193539424031
+    ],
+    "events": 5.5
+   },
+   "Moderate": {
+    "share_of_rows": 0.2078125,
+    "event_rate": 0.18444255576453922,
+    "event_rate_ci": [
+     0.08727283244930305,
+     0.2703406853658875
+    ],
+    "events": 5.1
+   },
+   "High": {
+    "share_of_rows": 0.49609375,
+    "event_rate": 0.16399979698193662,
+    "event_rate_ci": [
+     0.06417381863623231,
+     0.25588907591454974
+    ],
+    "events": 10.4
+   }
+  },
+  "high_minus_low": 0.026088474611507234,
+  "high_minus_low_ci": [
+   -0.11189190966730496,
+   0.1548408306131059
+  ],
+  "rises_low_to_high": false,
+  "news2_standard_bands": {
+   "Low (0-4)": {
+    "share_of_rows": 0.5409836065573771,
+    "event_rate": 0.10606060606060606,
+    "event_rate_ci": [
+     0.03507259528130671,
+     0.17912124769411367
+    ],
+    "events": 7.0
+   },
+   "Medium (5-6)": {
+    "share_of_rows": 0.2540983606557377,
+    "event_rate": 0.1935483870967742,
+    "event_rate_ci": [
+     0.043432971014492755,
+     0.34615384615384615
+    ],
+    "events": 6.0
+   },
+   "High (7+)": {
+    "share_of_rows": 0.20491803278688525,
+    "event_rate": 0.28,
+    "event_rate_ci": [
+     0.1111111111111111,
+     0.4546103896103895
+    ],
+    "events": 7.0
+   },
+   "_rows_with_score": 0.953125
+  },
+  "news2_rises_low_to_high": true,
+  "news2_high_minus_low": 0.17393939393939395,
+  "news2_high_minus_low_ci": [
+   -1.993620414672955e-05,
+   0.35507622279681095
+  ]
+ }
+}

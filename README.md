@@ -74,7 +74,7 @@ Patient data stays in `data/` and is **never pushed to GitHub**. Many clinical d
 - [x] Phase 3: Cohort and label definition
 - [x] Phase 4: Preprocessing and trend features
 - [x] Phase 5: Modeling
-- [ ] Phase 6: Explainability
+- [x] Phase 6: Explainability
 - [ ] Phase 7: Backend
 - [ ] Phase 8: Frontend
 - [ ] Phase 9: Integration and alerts

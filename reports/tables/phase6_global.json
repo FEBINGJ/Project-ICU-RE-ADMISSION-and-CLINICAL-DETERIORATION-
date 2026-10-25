@@ -1,0 +1,272 @@
+{
+ "deterioration": {
+  "n_rows": 1986,
+  "n_refits": 30,
+  "share_of_attribution_from_missing_values": 0.043135084211826324,
+  "top_inputs": [
+   {
+    "column": "rr__std_24h",
+    "label": "Variability (standard deviation) of breathing rate over the last 24 h",
+    "group": "Vital-sign trends",
+    "mean_abs_shap": 0.40557554364204407,
+    "share_of_total": 0.07932273298501968,
+    "in_top10_of_refits": 0.8666666666666667
+   },
+   {
+    "column": "platelets__last",
+    "label": "Latest platelet count",
+    "group": "Latest lab results",
+    "mean_abs_shap": 0.3131127953529358,
+    "share_of_total": 0.06123880669474602,
+    "in_top10_of_refits": 0.6333333333333333
+   },
+   {
+    "column": "sbp__min_24h",
+    "label": "Lowest systolic blood pressure in the last 24 h",
+    "group": "Vital-sign trends",
+    "mean_abs_shap": 0.3116559088230133,
+    "share_of_total": 0.06095387041568756,
+    "in_top10_of_refits": 0.6
+   },
+   {
+    "column": "hr__max_24h",
+    "label": "Highest heart rate in the last 24 h",
+    "group": "Vital-sign trends",
+    "mean_abs_shap": 0.22701631486415863,
+    "share_of_total": 0.04440000280737877,
+    "in_top10_of_refits": 0.6
+   },
+   {
+    "column": "potassium__min_24h",
+    "label": "Lowest potassium in the last 24 h",
+    "group": "Lab trends (24 h)",
+    "mean_abs_shap": 0.21013569831848145,
+    "share_of_total": 0.04109847918152809,
+    "in_top10_of_refits": 0.4666666666666667
+   },
+   {
+    "column": "spo2__mean_24h",
+    "label": "Average oxygen saturation (SpO2) over the last 24 h",
+    "group": "Vital-sign trends",
+    "mean_abs_shap": 0.16964493691921234,
+    "share_of_total": 0.03317926824092865,
+    "in_top10_of_refits": 0.26666666666666666
+   },
+   {
+    "column": "gcs__mean_24h",
+    "label": "Average Glasgow Coma Scale score over the last 24 h",
+    "group": "Vital-sign trends",
+    "mean_abs_shap": 0.15059314668178558,
+    "share_of_total": 0.029453108087182045,
+    "in_top10_of_refits": 0.3
+   },
+   {
+    "column": "calcium__last",
+    "label": "Latest calcium",
+    "group": "Latest lab results",
+    "mean_abs_shap": 0.12634484469890594,
+    "share_of_total": 0.024710608646273613,
+    "in_top10_of_refits": 0.2
+   },
+   {
+    "column": "gcs__max_24h",
+    "label": "Highest Glasgow Coma Scale score in the last 24 h",
+    "group": "Vital-sign trends",
+    "mean_abs_shap": 0.11000239104032516,
+    "share_of_total": 0.021514341235160828,
+    "in_top10_of_refits": 0.13333333333333333
+   },
+   {
+    "column": "platelets__max_24h",
+    "label": "Highest platelet count in the last 24 h",
+    "group": "Lab trends (24 h)",
+    "mean_abs_shap": 0.10920190811157227,
+    "share_of_total": 0.021357782185077667,
+    "in_top10_of_refits": 0.5666666666666667
+   }
+  ],
+  "stable_inputs": [
+   {
+    "column": "rr__std_24h",
+    "label": "Variability (standard deviation) of breathing rate over the last 24 h",
+    "in_top10_of_refits": 0.8666666666666667
+   }
+  ],
+  "group_share": {
+   "Latest vital signs": {
+    "share": 0.008661529049277306,
+    "refit_mean": 0.015453497879207134,
+    "refit_sd": 0.008803886361420155
+   },
+   "Vital-sign trends": {
+    "share": 0.5449866652488708,
+    "refit_mean": 0.5603774189949036,
+    "refit_sd": 0.05207819491624832
+   },
+   "Latest lab results": {
+    "share": 0.16363009810447693,
+    "refit_mean": 0.14310644567012787,
+    "refit_sd": 0.04701901972293854
+   },
+   "Lab trends (24 h)": {
+    "share": 0.23838070034980774,
+    "refit_mean": 0.23385268449783325,
+    "refit_sd": 0.04698016494512558
+   },
+   "Measurement pattern": {
+    "share": 0.012844244949519634,
+    "refit_mean": 0.012870248407125473,
+    "refit_sd": 0.009193331934511662
+   },
+   "Whole-stay vitals": {
+    "share": 0.0,
+    "refit_mean": 0.0,
+    "refit_sd": 0.0
+   },
+   "Patient and stay context": {
+    "share": 0.03149678185582161,
+    "refit_mean": 0.034339647740125656,
+    "refit_sd": 0.02061237208545208
+   }
+  },
+  "stability": {
+   "rank_correlation_mean": 0.5158739429762091,
+   "rank_correlation_min": 0.3963624574865931,
+   "top10_overlap_mean": 0.46333333333333343,
+   "top10_overlap_min": 0.2
+  },
+  "top10_share_of_total": 0.41722896695137024
+ },
+ "readmission": {
+  "n_rows": 128,
+  "n_refits": 30,
+  "share_of_attribution_from_missing_values": 0.025945167988538742,
+  "top_inputs": [
+   {
+    "column": "rr__mean_24h",
+    "label": "Average breathing rate over the last 24 h",
+    "group": "Vital-sign trends",
+    "mean_abs_shap": 0.24222049117088318,
+    "share_of_total": 0.05428451672196388,
+    "in_top10_of_refits": 0.16666666666666666
+   },
+   {
+    "column": "spo2__last",
+    "label": "Latest oxygen saturation (SpO2)",
+    "group": "Latest vital signs",
+    "mean_abs_shap": 0.2289724051952362,
+    "share_of_total": 0.051315464079380035,
+    "in_top10_of_refits": 0.36666666666666664
+   },
+   {
+    "column": "spo2__std_24h",
+    "label": "Variability (standard deviation) of oxygen saturation (SpO2) over the last 24 h",
+    "group": "Vital-sign trends",
+    "mean_abs_shap": 0.20628678798675537,
+    "share_of_total": 0.04623134434223175,
+    "in_top10_of_refits": 0.3333333333333333
+   },
+   {
+    "column": "map__stay_mean",
+    "label": "Average mean blood pressure over the whole ICU stay",
+    "group": "Whole-stay vitals",
+    "mean_abs_shap": 0.19707435369491577,
+    "share_of_total": 0.04416672885417938,
+    "in_top10_of_refits": 0.43333333333333335
+   },
+   {
+    "column": "platelets__min_24h",
+    "label": "Lowest platelet count in the last 24 h",
+    "group": "Lab trends (24 h)",
+    "mean_abs_shap": 0.1260623186826706,
+    "share_of_total": 0.028252078220248222,
+    "in_top10_of_refits": 0.43333333333333335
+   },
+   {
+    "column": "rr__stay_mean",
+    "label": "Average breathing rate over the whole ICU stay",
+    "group": "Whole-stay vitals",
+    "mean_abs_shap": 0.11973749101161957,
+    "share_of_total": 0.026834608986973763,
+    "in_top10_of_refits": 0.2
+   },
+   {
+    "column": "potassium__min_24h",
+    "label": "Lowest potassium in the last 24 h",
+    "group": "Lab trends (24 h)",
+    "mean_abs_shap": 0.11419691890478134,
+    "share_of_total": 0.025592898949980736,
+    "in_top10_of_refits": 0.5333333333333333
+   },
+   {
+    "column": "sbp__mean_6h",
+    "label": "Average systolic blood pressure over the last 6 h",
+    "group": "Vital-sign trends",
+    "mean_abs_shap": 0.10594905912876129,
+    "share_of_total": 0.023744454607367516,
+    "in_top10_of_refits": 0.3333333333333333
+   },
+   {
+    "column": "platelets__last",
+    "label": "Latest platelet count",
+    "group": "Latest lab results",
+    "mean_abs_shap": 0.10443521291017532,
+    "share_of_total": 0.023405184969305992,
+    "in_top10_of_refits": 0.3333333333333333
+   },
+   {
+    "column": "temp__slope_12h",
+    "label": "Trend of temperature over the last 12 h",
+    "group": "Vital-sign trends",
+    "mean_abs_shap": 0.09676231443881989,
+    "share_of_total": 0.02168559469282627,
+    "in_top10_of_refits": 0.2
+   }
+  ],
+  "stable_inputs": [],
+  "group_share": {
+   "Latest vital signs": {
+    "share": 0.060690637677907944,
+    "refit_mean": 0.052364006638526917,
+    "refit_sd": 0.03257979080080986
+   },
+   "Vital-sign trends": {
+    "share": 0.5080463886260986,
+    "refit_mean": 0.5394161343574524,
+    "refit_sd": 0.090137779712677
+   },
+   "Latest lab results": {
+    "share": 0.07306908071041107,
+    "refit_mean": 0.057735517621040344,
+    "refit_sd": 0.026231443509459496
+   },
+   "Lab trends (24 h)": {
+    "share": 0.1340710073709488,
+    "refit_mean": 0.1335708647966385,
+    "refit_sd": 0.05822261795401573
+   },
+   "Measurement pattern": {
+    "share": 0.026485595852136612,
+    "refit_mean": 0.027664942666888237,
+    "refit_sd": 0.016078464686870575
+   },
+   "Whole-stay vitals": {
+    "share": 0.1787223517894745,
+    "refit_mean": 0.16925176978111267,
+    "refit_sd": 0.06359687447547913
+   },
+   "Patient and stay context": {
+    "share": 0.018914859741926193,
+    "refit_mean": 0.019996749237179756,
+    "refit_sd": 0.016445323824882507
+   }
+  },
+  "stability": {
+   "rank_correlation_mean": 0.4682681594770496,
+   "rank_correlation_min": 0.2848778264376086,
+   "top10_overlap_mean": 0.33333333333333337,
+   "top10_overlap_min": 0.0
+  },
+  "top10_share_of_total": 0.34551286697387695
+ }
+}

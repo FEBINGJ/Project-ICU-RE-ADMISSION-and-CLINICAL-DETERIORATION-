@@ -24,6 +24,11 @@
 
 The model choice was "no clear winner" among XGBoost, Random Forest and LSTM; XGBoost was selected as the tree model with the highest AUROC, because tree models are easier to explain with SHAP. The selected model's score is slightly optimistic for that reason.
 
+## Risk bands and explanations (Phase 6)
+- **Bands.** Deterioration only: Low, Moderate and High with observed event rates of 3.3%, 3.8% and 5.3% (the gap is not confirmed). Readmission has no bands because the rates do not rise with the score.
+- **Explanations.** SHAP factors (5 by default) with plain-language names and a written explanation. The factors describe what the model used, not causes. The ranking of individual inputs is unstable across refits; the importance of trend features as a group is stable.
+- **Demo caveat.** Predictions for patients the model was fitted on are overconfident; the replay demo must use cross-validated predictions.
+
 ## Intended use
 Demonstrating an end-to-end risk-prediction pipeline: patient-level validation, leakage control, baseline comparison, calibration and explanation on a public demo dataset.
 
