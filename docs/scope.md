@@ -36,10 +36,10 @@ How each part is tested:
 | Research gap | Decided | Trend features vs snapshot features vs NEWS2/MEWS, with alert burden (see research question) |
 | Readmission definition | Decided | ICU readmission within 30 days of ICU discharge, predicted at ICU discharge. Window to confirm against demo event counts. |
 | Deterioration definition | Decided (adapted in Phase 2, confirmed 2026-10-24) | Within the ICU: start of invasive mechanical ventilation or death within 24 hours of a 6-hourly prediction time point. "ICU transfer" is dropped because the dataset has no ward vital signs (see Phase 2 findings). |
-| Cohort | Proposed | Adults only; exclude patients who died in the ICU (as in the iREAD study) |
-| Prediction time point | Proposed | Readmission: at ICU discharge. Deterioration: every 6 hours (sliding windows). |
-| Validation | Proposed | Stratified cross-validation split by patient, never by row |
-| Evaluation metrics | Proposed | Accuracy, Precision, F1, AUROC as requested; AUROC and F1 decide the winner. Recall, AUPRC and calibration added because the classes are imbalanced. |
+| Cohort | Decided | Adults only; exclude patients who died in the ICU (as in the iREAD study) |
+| Prediction time point | Decided | Readmission: at ICU discharge. Deterioration: every 6 hours (sliding windows). |
+| Validation | Decided | Repeated 5-fold cross-validation (10 repeats), grouped and stratified by patient, never split by row |
+| Evaluation metrics | Decided | Accuracy, Precision, F1, AUROC as requested; AUROC and F1 decide the winner. Recall, AUPRC and calibration added because the classes are imbalanced. |
 | Final submission | Flexible | Around February 2027; no strict deadline |
 
 ## Literature basis (Phase 1)
@@ -76,6 +76,22 @@ Computed in `notebooks/01_eda_mimic_demo.ipynb`; label logic in `ml/data/mimic_d
 | Feature-set ablation | "Snapshot only" versus "snapshot + trend" (the research question), plus "vitals only" versus "vitals + labs" |
 | LSTM input | 24 hourly steps with the values plus a "measured" mask |
 | Leakage test | A test that changes data after the prediction time and checks that the features do not change |
+
+## Modeling decisions for Phase 5 (locked 2026-10-24)
+
+| Decision | Choice |
+|---|---|
+| Structure | Part A: shared test setup, XGBoost, Random Forest, snapshot-vs-trend comparison. Part B: LSTM, reusing the Part A setup unchanged. Part C: compare all three models plus the NEWS2/MEWS baselines, choose the winners |
+| One winner per task | Deterioration and readmission are compared and decided separately; the two winners may be the same algorithm or different ones |
+| Validation | Repeated 5-fold cross-validation, 10 repeats, all rows of a patient in the same fold; identical folds, seeds and threshold rule for all three models |
+| Tuning | None; fixed conservative settings (shallow trees, strong regularisation, class weights), because tuning on this little data mostly fits noise |
+| Feature sets | A snapshot + context; B = A + trends; C = B + core labs; D = C + lactate and INR; readmission also adds whole-stay summaries |
+| Baselines | NEWS2 and MEWS on exactly the same rows, plus a "predict the average rate" reference |
+| Threshold | For Accuracy, Precision, Recall and F1 the cut-off is the F1-best value found inside the training folds, never from the test fold |
+| Metrics reported | Accuracy, Precision, Recall, F1, AUROC, AUPRC, calibration (Brier score); alerts per patient-day for deterioration; every number with a confidence range |
+| Winner rule (fixed in advance) | Highest average AUROC, F1 as tiebreaker. If the confidence ranges overlap: "no clear winner", and the simpler tree model is chosen (SHAP explanations are easier) |
+| After the choice | The winner of each task is refitted on all the data for the dashboard; the cross-validation models are not reused |
+| Caveat to report | The winner's score is slightly optimistic because it was picked from the same results that are reported |
 
 ## Known limitations of this project
 - Small cohort (100 patients); results are a proof of concept, not clinically validated

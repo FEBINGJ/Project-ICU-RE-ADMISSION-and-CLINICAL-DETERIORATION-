@@ -1,0 +1,216 @@
+{
+ "deterioration": {
+  "xgboost: A->B": {
+   "what": "trends added to snapshot",
+   "auroc": {
+    "diff": 0.04673669652265555,
+    "ci_low": -0.04825920766606533,
+    "ci_high": 0.14035620622672282,
+    "share_of_draws_above_0": 0.833
+   },
+   "f1": {
+    "diff": 0.013059131187232592,
+    "ci_low": -0.009332181408075065,
+    "ci_high": 0.041312373240765955,
+    "share_of_draws_above_0": 0.852
+   }
+  },
+  "xgboost: B->C": {
+   "what": "core labs added",
+   "auroc": {
+    "diff": 0.02535982852763663,
+    "ci_low": -0.020220682482962958,
+    "ci_high": 0.06911279642629554,
+    "share_of_draws_above_0": 0.85
+   },
+   "f1": {
+    "diff": 0.008593159856905785,
+    "ci_low": -0.009605705603847221,
+    "ci_high": 0.02564008386311345,
+    "share_of_draws_above_0": 0.815
+   }
+  },
+  "xgboost: C->D": {
+   "what": "lactate + INR added",
+   "auroc": {
+    "diff": -0.009644123000287386,
+    "ci_low": -0.028882301576777247,
+    "ci_high": 0.005508811759053919,
+    "share_of_draws_above_0": 0.11
+   },
+   "f1": {
+    "diff": -0.006042027285556556,
+    "ci_low": -0.015797932661684954,
+    "ci_high": 0.002856054381784302,
+    "share_of_draws_above_0": 0.104
+   }
+  },
+  "random_forest: A->B": {
+   "what": "trends added to snapshot",
+   "auroc": {
+    "diff": 0.031168574576108887,
+    "ci_low": -0.05381862420836052,
+    "ci_high": 0.11106295623012535,
+    "share_of_draws_above_0": 0.761
+   },
+   "f1": {
+    "diff": 0.009884606790679387,
+    "ci_low": -0.006746058248692005,
+    "ci_high": 0.028110728617943042,
+    "share_of_draws_above_0": 0.871
+   }
+  },
+  "random_forest: B->C": {
+   "what": "core labs added",
+   "auroc": {
+    "diff": 0.000262836478589934,
+    "ci_low": -0.06699704617112133,
+    "ci_high": 0.05702617637155672,
+    "share_of_draws_above_0": 0.526
+   },
+   "f1": {
+    "diff": -0.006426009964138432,
+    "ci_low": -0.02403585329381978,
+    "ci_high": 0.009142748189882054,
+    "share_of_draws_above_0": 0.197
+   }
+  },
+  "random_forest: C->D": {
+   "what": "lactate + INR added",
+   "auroc": {
+    "diff": -0.003900038317846577,
+    "ci_low": -0.013103998440502968,
+    "ci_high": 0.006305986084271453,
+    "share_of_draws_above_0": 0.227
+   },
+   "f1": {
+    "diff": 0.0019377028568178106,
+    "ci_low": -0.003327752079894299,
+    "ci_high": 0.00875688428509739,
+    "share_of_draws_above_0": 0.745
+   }
+  }
+ },
+ "readmission": {
+  "xgboost: A->B": {
+   "what": "trends added to snapshot",
+   "auroc": {
+    "diff": -0.04984423676012473,
+    "ci_low": -0.15800199698938278,
+    "ci_high": 0.06775132340295927,
+    "share_of_draws_above_0": 0.182
+   },
+   "f1": {
+    "diff": -0.024078290989848594,
+    "ci_low": -0.08613769633343366,
+    "ci_high": 0.03118776359413211,
+    "share_of_draws_above_0": 0.209
+   }
+  },
+  "xgboost: B->S": {
+   "what": "whole-stay summaries added",
+   "auroc": {
+    "diff": 0.0038718291054741227,
+    "ci_low": -0.045048243766846276,
+    "ci_high": 0.05358468428958861,
+    "share_of_draws_above_0": 0.557
+   },
+   "f1": {
+    "diff": -0.010910430469019627,
+    "ci_low": -0.04160657616270105,
+    "ci_high": 0.018134175269746172,
+    "share_of_draws_above_0": 0.232
+   }
+  },
+  "xgboost: S->C": {
+   "what": "core labs added",
+   "auroc": {
+    "diff": 0.03012906097018242,
+    "ci_low": -0.00986868686868686,
+    "ci_high": 0.06545737273831333,
+    "share_of_draws_above_0": 0.925
+   },
+   "f1": {
+    "diff": -0.00729543707110894,
+    "ci_low": -0.03166754397215866,
+    "ci_high": 0.012763407508748234,
+    "share_of_draws_above_0": 0.261
+   }
+  },
+  "xgboost: C->D": {
+   "what": "lactate + INR added",
+   "auroc": {
+    "diff": -0.0024922118380064084,
+    "ci_low": -0.012252477785372551,
+    "ci_high": 0.007026244994995027,
+    "share_of_draws_above_0": 0.271
+   },
+   "f1": {
+    "diff": 0.01471546421691064,
+    "ci_low": -0.002628112876539734,
+    "ci_high": 0.031458252649422036,
+    "share_of_draws_above_0": 0.95
+   }
+  },
+  "random_forest: A->B": {
+   "what": "trends added to snapshot",
+   "auroc": {
+    "diff": -0.034312416555407066,
+    "ci_low": -0.18130112497912843,
+    "ci_high": 0.11799497377622369,
+    "share_of_draws_above_0": 0.356
+   },
+   "f1": {
+    "diff": -0.011599462126490656,
+    "ci_low": -0.0655872958398079,
+    "ci_high": 0.04141002749146025,
+    "share_of_draws_above_0": 0.353
+   }
+  },
+  "random_forest: B->S": {
+   "what": "whole-stay summaries added",
+   "auroc": {
+    "diff": 0.003649310191366162,
+    "ci_low": -0.03184946080550829,
+    "ci_high": 0.03569527319527326,
+    "share_of_draws_above_0": 0.58
+   },
+   "f1": {
+    "diff": -0.016670894576461037,
+    "ci_low": -0.049511713045767965,
+    "ci_high": 0.007318416999553919,
+    "share_of_draws_above_0": 0.116
+   }
+  },
+  "random_forest: S->C": {
+   "what": "core labs added",
+   "auroc": {
+    "diff": 0.016332888295505277,
+    "ci_low": -0.03229323915763138,
+    "ci_high": 0.053727025898078484,
+    "share_of_draws_above_0": 0.765
+   },
+   "f1": {
+    "diff": 0.0012958014382758731,
+    "ci_low": -0.03325961963779686,
+    "ci_high": 0.03242720966392225,
+    "share_of_draws_above_0": 0.532
+   }
+  },
+  "random_forest: C->D": {
+   "what": "lactate + INR added",
+   "auroc": {
+    "diff": 0.0027147307521139252,
+    "ci_low": -0.011105902777777826,
+    "ci_high": 0.016660501035860385,
+    "share_of_draws_above_0": 0.65
+   },
+   "f1": {
+    "diff": 0.012907191389468026,
+    "ci_low": -0.0030521761334964216,
+    "ci_high": 0.03292036264602672,
+    "share_of_draws_above_0": 0.946
+   }
+  }
+ }
+}
