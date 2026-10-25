@@ -93,6 +93,21 @@ Computed in `notebooks/01_eda_mimic_demo.ipynb`; label logic in `ml/data/mimic_d
 | After the choice | The winner of each task is refitted on all the data for the dashboard; the cross-validation models are not reused |
 | Caveat to report | The winner's score is slightly optimistic because it was picked from the same results that are reported |
 
+## Phase 5 outcome (completed 2026-10-25)
+
+| Item | Result |
+|---|---|
+| Candidates compared | XGBoost and Random Forest on feature set C, LSTM on vitals + labs; NEWS2 and MEWS as comparators (fixed before the Part C numbers) |
+| Winner rule as applied | Highest mean AUROC; "clearly worse" = paired 95% range of the difference excludes 0 (official) or separate ranges do not overlap (locked wording); if the two tests disagree, the locked wording decides. If nothing is clearly worse, the tree model with the highest AUROC wins |
+| Deterioration | No clear winner; XGBoost chosen (AUROC 0.59, range 0.47 to 0.71; NEWS2 0.65) |
+| Readmission | No clear winner; XGBoost chosen (AUROC 0.59, range 0.43 to 0.73; MEWS 0.66) |
+| Trend features | No reliable benefit (paired ranges include zero) |
+| Versus NEWS2/MEWS | No evidence of a difference either way; alert burden at matched sensitivity is the same |
+| Calibration | Platt scaling inside the folds; calibrated risks stay near the average event rate (deterioration 3 to 8%, readmission 6 to 25%) |
+| Saved models | models/deterioration_xgboost.joblib and models/readmission_xgboost.joblib (git-ignored) |
+| Dashboard consequence | Show the calibrated risk with NEWS2/MEWS beside it and a research-prototype notice; never show raw model probabilities as "% risk" |
+| Details | docs/results_part_a.md, results_part_b.md, results_part_c.md, model_card.md |
+
 ## Known limitations of this project
 - Small cohort (100 patients); results are a proof of concept, not clinically validated
 - Few readmission events, so estimates will have wide uncertainty

@@ -73,7 +73,7 @@ Patient data stays in `data/` and is **never pushed to GitHub**. Many clinical d
 - [x] Phase 2: Data understanding (EDA)
 - [x] Phase 3: Cohort and label definition
 - [x] Phase 4: Preprocessing and trend features
-- [ ] Phase 5: Modeling (Part A done: XGBoost, Random Forest, baselines; Part B done: LSTM; Part C comparison next)
+- [x] Phase 5: Modeling
 - [ ] Phase 6: Explainability
 - [ ] Phase 7: Backend
 - [ ] Phase 8: Frontend
