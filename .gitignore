@@ -1,3 +1,7 @@
+# Never commit environment files
+
+
+
 # --- Patient data: NEVER commit (dataset licences usually forbid redistribution) ---
 data/raw/*
 data/interim/*
@@ -10,8 +14,7 @@ data/processed/*
 *.feather
 *.db
 *.sqlite
-
-# --- Trained models and reports ---
+# Never commit environment files
 models/*
 !models/.gitkeep
 reports/figures/*
@@ -27,6 +30,8 @@ venv/
 *.egg-info/
 
 # --- Secrets / environment ---
+# Never commit environment files
+
 .env
 .env.*
 !.env.example
