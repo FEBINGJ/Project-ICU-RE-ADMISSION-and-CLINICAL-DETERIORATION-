@@ -6,9 +6,9 @@
 data/raw/*
 data/interim/*
 data/processed/*
-!data/raw/.gitkeep
-!data/interim/.gitkeep
-!data/processed/.gitkeep
+data/raw/.gitkeep
+data/interim/.gitkeep
+data/processed/.gitkeep
 *.csv
 *.parquet
 *.feather
@@ -16,7 +16,7 @@ data/processed/*
 *.sqlite
 # Never commit environment files
 models/*
-!models/.gitkeep
+models/.gitkeep
 reports/figures/*
 !reports/figures/.gitkeep
 
@@ -34,7 +34,7 @@ venv/
 
 .env
 .env.*
-!.env.example
+.env.example
 
 # --- Frontend ---
 node_modules/
