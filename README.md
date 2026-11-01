@@ -46,6 +46,12 @@ pip install -r requirements.txt
 # 3. Create your environment file
 cp .env.example .env             # Windows: copy .env.example .env
 
+# 3b. Put your PostgreSQL password in .env, create the empty database and its tables
+#     (details and troubleshooting: docs/database.md)
+createdb -U postgres -h localhost icu_risk
+alembic upgrade head
+python -m backend.app.db.check   # should end with "All good."
+
 # 4. Run the backend
 uvicorn backend.app.main:app --reload
 
@@ -75,9 +81,7 @@ Patient data stays in `data/` and is **never pushed to GitHub**. Many clinical d
 - [x] Phase 4: Preprocessing and trend features
 - [x] Phase 5: Modeling
 - [x] Phase 6: Explainability
-- [ ] Phase 7: Backend
+- [ ] Phase 7: Backend (Part A done: screens and API contract in `docs/api_contract.md`; Part B done: PostgreSQL tables and migration, `docs/database.md`; Parts C to F next)
 - [ ] Phase 8: Frontend
 - [ ] Phase 9: Integration and alerts
-- [ ] Phase 10: Testing, documentation, 
-
-testing - testing 
+- [ ] Phase 10: Testing, documentation, report

@@ -1,0 +1,31 @@
+# Optional: a ready-made PostgreSQL for anyone who clones the project (Phase 7 Part B).
+# You do NOT need this if you use the PostgreSQL installed on your laptop.
+#
+# It reads DB_NAME, DB_USER and DB_PASSWORD from your .env file (same folder), so there is no second password to keep.
+#   start:            docker compose up -d
+#   check it is up:   docker compose ps          (STATUS should say "healthy")
+#   stop:             docker compose down         (your data stays in the volume)
+#   delete all data:  docker compose down -v
+# The database is published on port 5433, so set DB_PORT=5433 in .env while using it.
+
+services:
+  db:
+    image: postgres:16
+    container_name: icu_risk_db
+    restart: unless-stopped
+    environment:
+      POSTGRES_DB: ${DB_NAME:-icu_risk}
+      POSTGRES_USER: ${DB_USER:-postgres}
+      POSTGRES_PASSWORD: ${DB_PASSWORD:?Set DB_PASSWORD in the .env file first}
+    ports:
+      - "5433:5432"
+    volumes:
+      - icu_risk_pgdata:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U $${POSTGRES_USER} -d $${POSTGRES_DB}"]
+      interval: 5s
+      timeout: 3s
+      retries: 10
+
+volumes:
+  icu_risk_pgdata:
